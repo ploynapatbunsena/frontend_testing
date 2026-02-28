@@ -113,7 +113,6 @@ section+section {
   background: var(--color-white);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(6px);
   transition: all 0.3s;
   padding-top: 6px;
 
@@ -156,7 +155,7 @@ section+section {
   color: var(--color-black-50);
 }
 
-.mobile__menu {
+.dropdown__menu .mobile__menu {
   display: none;
 }
 
@@ -204,11 +203,25 @@ section+section {
 }
 
 /* Hero */
-.hero__video {
+.hero {
+  position: relative;
+}
+
+.hero__image {
   width: 100dvw;
   height: 100dvh;
   object-fit: cover;
 }
+
+.hero__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  object-fit: cover;
+}
+
 
 .collection {
   position: relative;
@@ -232,6 +245,7 @@ section+section {
 .collection__text {
   position: absolute;
   justify-content: center;
+  text-align: center;
   pointer-events: none;
   color: var(--color-white);
   font-family: var(--font-hanken);
@@ -284,6 +298,11 @@ section+section {
   font-size: var(--font-size-subtitle);
   font-weight: var(--font-weight-bold);
   padding: 2rem 0;
+}
+
+.description__subtitle:hover,
+.description__body:hover {
+  opacity: 50%;
 }
 
 .description__body {
@@ -870,21 +889,14 @@ label {
   transform: translateY(0) rotate(-45deg);
 }
 
+@media (min-width: 768px) {
+  .collection__text br {
+    display: none;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-
-  /* body {
-    padding: 0 2.2rem;
-  }
-
-  .hero,
-  .navbar,
-  .scrolling-text-section,
-  .collection-grid {
-    margin-left: -2.2rem;
-    margin-right: -2.2rem;
-  } */
-  /* width: calc(100% + 4.4rem); */
 
   .navbar {
     padding: 0 1.4rem;
@@ -1007,8 +1019,13 @@ label {
     font-size: 1.8rem;
   }
 
+  .description {
+    padding: 0 2.2rem;
+  }
+
   .description__subtitle {
     font-size: 1.4rem
+    
   }
 
   .collection__image {
@@ -1133,5 +1150,9 @@ label {
 
   .button-subscribe {
     margin-top: 1.8rem;
+  }
+
+  .mobile__menu {
+    text-transform: uppercase;
   }
 }

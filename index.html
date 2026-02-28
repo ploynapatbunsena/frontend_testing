@@ -28,7 +28,7 @@
       <li class="hover-text">WOMEN</li>
       <li class="hover-text">COLLECTIONS</li>
       <li class="dropdown">
-        <a class="hover-text dropdown__trigger mobile-arrow">EDITORIAL<span class="mobile-arrow">▾</span></a>
+        <a class="hover-text dropdown__trigger">EDITORIAL<span class="mobile-arrow">▾</span></a>
         <div class="dropdown__menu">
           <a href="">A.S.C</a>
           <a href="">BAZAAR</a>
@@ -62,7 +62,8 @@
 
   <!-- Video Background -->
   <section class="hero">
-    <video class="hero__video" autoplay muted loop poster="assets/images/hero/collection-01.jpg">
+    <img class="hero__image" src="assets/images/hero/hero-banner.png" alt="hero banner">
+    <video class="hero__video" autoplay muted loop>
       <source src="assets/videos/hero-banner.mp4" type="video/mp4">
     </video>
   </section>
@@ -70,7 +71,7 @@
   <!-- New Collection -->
   <section class="collection" id="collectionSection">
     <div class="collection__card">
-      <img class="collection__image" src="assets/images/hero/mouth-gag.jpg" alt="mouth gag">
+      <img class="collection__image" src="assets/images/hero/mouth-gag.png" alt="mouth gag">
       <div class="collection__text text--lg">New</div>
     </div>
 
@@ -104,8 +105,10 @@
     <!-- collection 1 -->
     <div class="collection__card collection-grid__item--full">
       <div class="media-swap">
-        <img class="collection-grid__image collection-grid__image--lg" src="assets/images/hero/collection-01.jpg"
-          alt="collection 1">
+        <picture>
+          <source srcset="assets/images/hero/mobile/mobile-collection-01.png" media="(max-width: 768px)">
+          <img class="collection-grid__image collection-grid__image--lg" src="assets/images/hero/collection-01.png" alt="collection 1">
+        </picture>
         <video class="collection-grid__image collection-grid__image--lg media-swap__video" muted loop playsinline>
           <source src="assets/videos/collection-01.mp4" type="video/mp4">
         </video>
@@ -115,22 +118,26 @@
     <!-- collection 2 -->
     <div class="collection__card">
       <div class="image-swap">
-        <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-02.jpg"
-          alt="collection 2">
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/images/hero/mobile/mobile-collection-02.png">
+          <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-02.png" alt="collection 2">
+        </picture>
         <img class="collection-grid__image collection-grid__image--md image-swap__hover"
           src="assets/images/hero/people-fade.png" alt="collection 2 hover">
       </div>
-      <div class="collection__text">COLLECTION 02</div>
+      <div class="collection__text text--sm">COLLECTION <br> 02</div>
     </div>
     <!-- collection 3 -->
     <div class="collection__card">
       <div class="image-swap">
-        <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-03.jpg"
-          alt="collection 3">
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/images/hero/mobile/mobile-collection-03.png">
+          <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-03.png" alt="collection 3">
+        </picture>
         <img class="collection-grid__image collection-grid__image--md image-swap__hover "
           src="assets/images/hero/people-fade.png" alt="collection 3 hover">
       </div>
-      <div class="collection__text text--sm">COLLECTION 03</div>
+      <div class="collection__text text--sm">COLLECTION <br> 03</div>
     </div>
   </section>
 
