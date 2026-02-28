@@ -3,6 +3,7 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -36,14 +37,10 @@ html {
 }
 
 body {
-  height: 100dvh;
-  overflow-x: hidden;
+  min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   background: var(--color-white);
-  overflow-y: auto;
-  /* หรือ "scroll" ถ้าต้องการให้ scrollbar ถือว่ามีพื้นที่เสมอ */
   -ms-overflow-style: none;
-  /* IE 10+ */
   scrollbar-width: none;
 }
 
@@ -119,12 +116,14 @@ section+section {
   transform: translateY(6px);
   transition: all 0.3s;
   padding-top: 6px;
+
   a {
     display: block;
     padding: 10px;
     text-decoration: none;
     color: var(--color-dark);
   }
+
   a:hover {
     font-size: var(--font-size-body);
     font-weight: 500;
@@ -157,6 +156,10 @@ section+section {
   color: var(--color-black-50);
 }
 
+.mobile__menu {
+  display: none;
+}
+
 .sign-in {
   display: flex;
   justify-content: center;
@@ -178,7 +181,6 @@ section+section {
   position: fixed;
   left: 0;
   width: 100dvw;
-  padding: 0 20px;
   mix-blend-mode: difference;
   display: flex;
   justify-content: center;
@@ -189,6 +191,7 @@ section+section {
 .logo img {
   transform-origin: top center;
   width: 100dvw;
+  padding: 0 20px;
 }
 
 /* Mobile menu logo (hidden on desktop) */
@@ -202,8 +205,8 @@ section+section {
 
 /* Hero */
 .hero__video {
-  width: 100%;
-  height: 100%;
+  width: 100dvw;
+  height: 100dvh;
   object-fit: cover;
 }
 
@@ -381,6 +384,7 @@ section+section {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -854,8 +858,9 @@ label {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
   .navbar {
-    padding: 0 20px;
+    padding: 0 1.4rem;
   }
 
   .hamburger {
@@ -874,9 +879,14 @@ label {
     z-index: 999;
     padding-top: 1.6rem;
     align-items: center;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     display: none;
     overflow-y: hidden;
+  }
+
+  .mobile__menu {
+    display: block;
+    text-transform: uppercase;
   }
 
   .menu__links.active {
@@ -915,18 +925,27 @@ label {
     font-size: 1.4rem;
   }
 
+  /* EDITORIAL trigger scale up when open */
+  .menu__links .dropdown .dropdown__trigger {
+    transition: font-size 0.3s ease;
+  }
+
+  .menu__links .dropdown.open .dropdown__trigger {
+    font-size: 2.4rem;
+  }
+
   /* On mobile, only .open class controls visibility (not hover) */
   .menu__links .dropdown:hover .dropdown__menu {
     display: none;
   }
 
   .menu__links .dropdown .dropdown__menu.open {
-    display: block !important;
+    display: block;
   }
 
   .hover-text:focus-within,
   .dropdown:focus-within .dropdown__trigger {
-    transform: scale(0.31);
+    transform: scale(0.54);
     font-weight: var(--font-weight-bold);
   }
 
@@ -939,9 +958,26 @@ label {
     list-style: none;
     mix-blend-mode: difference;
   }
-  
+
   .menu__logo-mobile img {
     width: 100dvw;
     padding: 0 .6rem;
+  }
+
+  .hero__video {
+    height: 100dvh;
+  }
+
+  /* .collection__image {
+    width: 282px;
+    height: 286px;
+  } */
+
+  .text--lg {
+    font-size: 4rem;
+  }
+
+  .description__subtitle {
+    font-size: var(--font-size-body);
   }
 }

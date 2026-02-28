@@ -44,13 +44,14 @@ let ticking = false;
 function calculateLogoSize() {
     // reset scale ก่อนวัดจริง
     logoImg.style.transform = 'scale(1)';
-    
+
     logoFullHeight = logo.offsetHeight;
     minScale = logoMinHeight / logoFullHeight;
 }
 
 // 🔹 ฟังก์ชัน update scale ตาม scroll
 function updateLogoScale() {
+    if (window.innerWidth <= 768) return;
     const videoRect = heroVideo.getBoundingClientRect();
     const videoTop = videoRect.top;
     const videoMidpoint = videoRect.height / 2;
@@ -317,9 +318,10 @@ if (editorialDropdown) {
     const editorialMenu = editorialDropdown.querySelector('.dropdown__menu');
 
     editorialTrigger.addEventListener('click', (e) => {
-			if (window.matchMedia('(max-width: 768px)').matches) {
-					e.preventDefault();
-					editorialMenu.classList.toggle('open');
-			}
-	});
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            e.preventDefault();
+            editorialMenu.classList.toggle('open');
+            editorialDropdown.classList.toggle('open');
+        }
+    });
 }
