@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Frontend Test - Plaimanas</title>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <div class="dropdown">
+      <p class="dropdown__language">TH - THB</p>
+      <div class="dropdown__menu ">
+        <a href="#">US - USD</a>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+      <span class="hamburger__line"></span>
+      <span class="hamburger__line"></span>
+    </button>
+
+    <ul class="menu__links" id="menuLinks">
+      <li class="hover-text">WOMEN</li>
+      <li class="hover-text">COLLECTIONS</li>
+      <li class="dropdown">
+        <a class="hover-text dropdown__trigger mobile-arrow">EDITORIAL<span class="mobile-arrow">▾</span></a>
+        <div class="dropdown__menu">
+          <a href="">A.S.C</a>
+          <a href="">BAZAAR</a>
+          <a href="">ELLE</a>
+          <a href="">GQ</a>
+        </div>
+      </li>
+      <li class="hover-text">NEWS</li>
+      <li class="hover-text">STORIES</li>
+      <li class="menu__logo-mobile">
+        <img src="assets/icons/logo-text.svg" alt="logo text">
+      </li>
+    </ul>
+
+    <div class="sign-in">
+      <p>SIGN IN</p>
+      <img src="/assets//icons/bag-shopping.svg" alt="bag shopping icon">
+    </div>
+  </nav>
+
+  <!-- Logo -->
+  <div class="logo" id="logo">
+    <img src="assets/icons/logo-text.svg" alt="logo text">
+  </div>
+
+  <div class="spacer-top"></div>
+
+  <!-- Video Background -->
+  <section class="hero">
+    <video class="hero__video" autoplay muted loop poster="assets/images/hero/collection-01.jpg">
+      <source src="assets/videos/hero-banner.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- New Collection -->
+  <section class="collection" id="collectionSection">
+    <div class="collection__card">
+      <img class="collection__image" src="assets/images/hero/mouth-gag.jpg" alt="mouth gag">
+      <div class="collection__text text--lg">New</div>
+    </div>
+
+    <div class="description">
+      <div class="description__subtitle">Sed egestas, nibh a condimentum imperdiet</div>
+      <div class="description__body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus commodo, turpis <br>
+        elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae</div>
+    </div>
+  </section>
+
+  <!-- Bestseller -->
+  <section class="collection">
+    <div class="collection__card">
+      <video class="best-seller" autoplay muted loop>
+        <source src="assets/videos/best-seller.mp4" type="video/mp4">
+      </video>
+      <div class="collection__text text--lg">Bestseller</div>
+    </div>
+
+    <div class="description">
+      <div class="description__subtitle">Sed egestas, nibh a condimentum imperdiet</div>
+      <div class="description__body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus commodo, turpis <br>
+        elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae</div>
+    </div>
+  </section>
+
+  <!-- Collection -->
+  <section class="collection-grid">
+    <!-- collection 1 -->
+    <div class="collection__card collection-grid__item--full">
+      <div class="media-swap">
+        <img class="collection-grid__image collection-grid__image--lg" src="assets/images/hero/collection-01.jpg"
+          alt="collection 1">
+        <video class="collection-grid__image collection-grid__image--lg media-swap__video" muted loop playsinline>
+          <source src="assets/videos/collection-01.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="collection__text text--md">COLLECTION 01</div>
+    </div>
+    <!-- collection 2 -->
+    <div class="collection__card">
+      <div class="image-swap">
+        <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-02.jpg"
+          alt="collection 2">
+        <img class="collection-grid__image collection-grid__image--md image-swap__hover"
+          src="assets/images/hero/people-fade.png" alt="collection 2 hover">
+      </div>
+      <div class="collection__text text--sm">COLLECTION 02</div>
+    </div>
+    <!-- collection 3 -->
+    <div class="collection__card">
+      <div class="image-swap">
+        <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-03.jpg"
+          alt="collection 3">
+        <img class="collection-grid__image collection-grid__image--md image-swap__hover "
+          src="assets/images/hero/people-fade.png" alt="collection 3 hover">
+      </div>
+      <div class="collection__text text--sm">COLLECTION 03</div>
+    </div>
+  </section>
+
+  <!-- Scrolling Text -->
+  <section class="scrolling-text-section">
+    <div class="scrolling-text-track scrolling-text-track--reverse">
+      <span class="scrolling-text-item text--md">
+        NEW ARRIVAL
+        <img src="assets/icons/arrow-left.svg" alt="arrow left" />
+        BEST SELLER
+        <img src="assets/icons/arrow-right.svg" alt="arrow right" />
+        NEW ARRIVAL
+        <img src="assets/icons/arrow-left.svg" alt="arrow left" />
+        BEST SELLER
+        <img src="assets/icons/arrow-right.svg" alt="arrow right" />
+        NEW ARRIVAL
+        <img src="assets/icons/arrow-left.svg" alt="arrow left" />
+        BEST SELLER
+        <img src="assets/icons/arrow-right.svg" alt="arrow right" />
+      </span>
+      <span class="scrolling-text-item text--md">
+        NEW ARRIVAL
+        <img src="assets/icons/arrow-left.svg" alt="arrow left" />
+        BEST SELLER
+        <img src="assets/icons/arrow-right.svg" alt="arrow right" />
+        NEW ARRIVAL
+        <img src="assets/icons/arrow-left.svg" alt="arrow left" />
+        BEST SELLER
+        <img src="assets/icons/arrow-right.svg" alt="arrow right" />
+        NEW ARRIVAL
+        <img src="assets/icons/arrow-left.svg" alt="arrow left" />
+        BEST SELLER
+        <img src="assets/icons/arrow-right.svg" alt="arrow right" />
+      </span>
+    </div>
+  </section>
+
+  <!-- Feature -->
+  <section class="feature">
+    <div class="feature-quote">
+      <span class="feature-quote__subtitle">Worldwide shipping</span>
+      <p class="feature-quote__body">Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Nam ornare, nisl non
+        rhoncus <br> commodo, turpis elit ultricies justo, vitae <br> molestie quam justo ut lacus. Proin vitae</p>
+    </div>
+    <div class="feature-quote">
+      <span class="feature-quote__subtitle">CUSTOMER SERVICE</span>
+      <p class="feature-quote__body"><span style="text-decoration: underline;">Lorem ipsum dolor sit amet,</span>
+        consectetur adipiscing elit. Nam ornare, nisl non rhoncus <br> commodo, turpis elit ultricies justo, vitae <br>
+        molestie quam justo ut lacus. Proin vitae</p>
+    </div>
+    <div class="feature-quote">
+      <span class="feature-quote__subtitle">SECURITY PAYMENT</span>
+      <p class="feature-quote__body">Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Nam ornare, nisl non
+        rhoncus <br> commodo, turpis elit ultricies justo, vitae <br> molestie quam justo ut lacus. Proin vitae</p>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section class="questions">
+    <div class="questions-space">
+      <!-- header -->
+      <div class="questions-header">
+        <p class="questions__title text--sm">FREQUENTLY ASKED QUESTIONS</p>
+        <p class="questions__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non
+          rhoncus commodo.</p>
+      </div>
+      <!-- badge -->
+      <div class="questions-badges">
+        <span class="badge-gray">ORDER</span>
+        <span class="badge-gray" data-category="shipping">SHIPPING</span>
+        <span class="badge-gray active" data-category="returns">RETURNS & EXCHANGES</span>
+        <span class="badge-gray">SIZING & PRODUCTS</span>
+      </div>
+
+      <!-- question list (generated by JS) -->
+      <div class="question-container" id="questionContainer"></div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="form">
+    <div class="form-space">
+      <div class="form-left">
+        <div class="form-title">Make an <br> inquiry</div>
+        <div class="form-description">Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Nam ornare, nisl non
+          rhoncus <br> commodo.</div>
+      </div>
+
+      <div class="form-right">
+        <div class="work-choice">
+          <input type="radio" checked name="work-type" id="onsite">
+          <label for="onsite">Onsite</label>
+          <input type="radio" name="work-type" id="hybrid">
+          <label for="hybrid">Hybrid</label>
+        </div>
+
+        <div class="form-contact">
+          <div class="floating-label">
+            <input type="text" id="fullName" class="form-contact__input" placeholder=" ">
+            <label for="fullName">Full Name*</label>
+          </div>
+          <div class="floating-label">
+            <input type="email" id="email" class="form-contact__input" placeholder=" " value="Plaimanas@gmail.com">
+            <label for="email">Email*</label>
+          </div>
+          <div class="floating-label">
+            <input type="text" id="phone" class="form-contact__input" placeholder=" ">
+            <label for="phone">Phone Number*</label>
+          </div>
+          <div class="floating-label custom-select" id="customSelect">
+            <div class="custom-select__trigger form-contact__input" id="selectTrigger">
+              <span class="custom-select__value" id="selectValue"></span>
+              <img src="assets/icons/arrow-down-gray.svg" alt="arrow down" class="custom-select__arrow"
+                id="selectArrow">
+            </div>
+            <label class="custom-select__label" id="selectLabel">Select Subject*</label>
+            <div class="custom-select__menu" id="selectMenu">
+              <div class="custom-select__option" data-value="General Inquiry">General Inquiry</div>
+              <div class="custom-select__option" data-value="Job Application">Job Application</div>
+              <div class="custom-select__option" data-value="Media & Press">Media &amp; Press</div>
+            </div>
+          </div>
+        </div>
+        <div class="consent">
+          <input type="checkbox">
+          <label for="">I agree to all terms & conditions</label>
+        </div>
+        <div class="form-submit">Send</div>
+      </div>
+    </div>
+    <div class="home-direction">
+      <a href="/index.html" class="home-direction__text">Homepage</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="">
+      <div class="footer-header">ABOUT</div>
+      <div class="footer-header__list">
+        <div class="list">Women</div>
+        <div class="list">Collections</div>
+        <div class="list">Editorial</div>
+        <div class="list">Stories</div>
+      </div>
+    </div>
+    <div class="">
+      <div class="footer-header">help</div>
+      <div class="footer-header__list">
+        <div class="list">Payment Notification</div>
+        <div class="list">Customer Service</div>
+        <div class="list">FAQ</div>
+      </div>
+    </div>
+    <div class="">
+      <div class="footer-header">social</div>
+      <div class="footer-header__list">
+        <div class="list">Instagram</div>
+        <div class="list">Facebook</div>
+      </div>
+    </div>
+    <div class="">
+      <div class="footer-header">legal</div>
+      <div class="footer-header__list">
+        <div class="list">Terms & Conditions</div>
+        <div class="list">Privacy Policy</div>
+        <div class="list">Cookies Policy</div>
+      </div>
+    </div>
+    <div class="">
+      <div class="footer-header">NEWSLETTER</div>
+      <div class="floating-label">
+        <input type="email" id="email" class="form-contact__input" placeholder=" ">
+        <label for="email">Email</label>
+      </div>
+      <div class="button-subscribe">
+        SUBSCRIBE
+      </div>
+    </div>
+
+    <div class="footer-credit">©PLAIMANAS</div>
+    <div class="footer-credit-by">Web by ::*</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
