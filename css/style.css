@@ -13,20 +13,31 @@ html {
 
 :root {
   --header-height: 4.5rem;
+
+  /* Typography */
   --font-hanken: "Hanken Grotesk", sans-serif;
   --font-weight-normal: 400;
+  --font-weight-medium: 500;
   --font-weight-bold: 700;
-  --font-size-subtitle: 16px;
+  --font-weight-black: 900;
+  --font-size-xs: 1.1rem;
+  --font-size-sm: 1.2rem;
+  --font-size-base: 1.3rem;
   --font-size-body: 14px;
-  /* color */
+  --font-size-subtitle: 16px;
+
+  /* Colors */
   --color-white: rgba(255, 255, 255, 1);
   --color-white-30: rgba(248, 249, 248, 1);
   --color-dark: rgba(0, 0, 0, 1);
   --color-gray-60: rgba(255, 255, 255, 0.6);
   --color-gray-20: rgba(255, 255, 255, 0.2);
+  --color-gray-border: rgba(130, 130, 130, 1);
+  --color-black-05: rgba(0, 0, 0, 0.05);
   --color-black-30: rgba(0, 0, 0, 0.3);
   --color-black-50: rgba(0, 0, 0, 0.5);
   --color-black-60: rgba(0, 0, 0, 0.6);
+  --color-light-gray: rgba(224, 224, 224, 1);
 }
 
 * {
@@ -80,7 +91,7 @@ section+section {
   align-items: center;
 }
 
-/* hover dropdown */
+/* Hover Dropdown */
 .dropdown {
   position: relative;
 }
@@ -448,9 +459,7 @@ section+section {
 
 .questions-space {
   display: block;
-  justify-content: center;
-  align-items: center;
-  width: 1092px;
+  width: 109.2rem;
   margin: 10rem auto;
 }
 
@@ -483,13 +492,13 @@ section+section {
 }
 
 .badge-gray {
-  font-size: 1.3rem;
-  font-weight: 400;
-  background: rgba(255, 255, 255, 0.2);
-  border: 0.5px solid rgba(130, 130, 130, 1);
-  border-radius: 100px;
-  padding: 10px 15px;
-  color: rgba(255, 255, 255, 1);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  background: var(--color-gray-20);
+  border: 0.5px solid var(--color-gray-border);
+  border-radius: 10rem;
+  padding: 1rem 1.5rem;
+  color: var(--color-white);
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
@@ -497,8 +506,8 @@ section+section {
 
 .badge-gray:hover,
 .badge-gray:focus-within {
-  background: rgba(255, 255, 255, 1);
-  color: rgba(0, 0, 0, 1);
+  background: var(--color-white);
+  color: var(--color-dark);
 }
 
 .question-list {
@@ -538,15 +547,15 @@ section+section {
 }
 
 .answer.open {
-  max-height: 200px;
+  max-height: 20rem;
   opacity: 1;
   margin: 1.4rem 0;
 }
 
 /* Active badge state */
 .badge-gray.active {
-  background: rgba(255, 255, 255, 1);
-  color: rgba(0, 0, 0, 1);
+  background: var(--color-white);
+  color: var(--color-dark);
 }
 
 /* Question item wrapper */
@@ -555,15 +564,15 @@ section+section {
 }
 
 .divider {
-  border: 1px solid var(--color-gray-20);
+  border: .1rem solid var(--color-gray-20);
   margin: 2.4rem auto;
 }
 
 /* Form */
 .form-space {
-  width: 1092px;
+  width: 109.2rem;
   display: grid;
-  grid-template-columns: 1fr 644px;
+  grid-template-columns: 1fr 64.4rem;
   gap: 7.4rem;
   margin: 0 auto;
 }
@@ -607,7 +616,7 @@ label {
 .form-right {
   display: flex;
   flex-direction: column;
-  gap: 21px;
+  gap: 2.1rem;
 }
 
 .form-contact {
@@ -638,7 +647,7 @@ label {
   width: 100%;
   height: 5.2rem;
   border: none;
-  border-bottom: 1px solid var(--color-black-50);
+  border-bottom: .1rem solid var(--color-black-50);
   outline: none;
   background: transparent;
   font-size: 1.4rem;
@@ -665,7 +674,7 @@ label {
   justify-content: space-between;
   cursor: pointer;
   border: none;
-  border-bottom: 1px solid var(--color-black-50);
+  border-bottom: .1rem solid var(--color-black-50);
   background: transparent;
   padding: 1.6rem 0 0.4rem 0;
 }
@@ -679,13 +688,7 @@ label {
 .custom-select__arrow {
   width: 1.4rem;
   height: 1.4rem;
-  /* transition: transform 0.25s ease; */
 }
-
-/* .custom-select.open .custom-select__arrow {
-  transform: rotate(180deg);
-
-  } */
 
 .custom-select__label {
   position: absolute;
@@ -715,7 +718,6 @@ label {
   left: 0;
   right: 0;
   background: var(--color-white-30);
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   z-index: 10;
   opacity: 0;
   visibility: hidden;
@@ -739,7 +741,7 @@ label {
 }
 
 .custom-select__option:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--color-black-05);
 }
 
 .consent {
@@ -751,8 +753,8 @@ label {
 }
 
 .consent input[type="checkbox"] {
-  width: 17px;
-  height: 17px;
+  width: 1.7rem;
+  height: 1.7rem;
 }
 
 .consent input[type="checkbox"]:checked {
@@ -792,8 +794,8 @@ label {
 }
 
 .button-send {
-  background: rgba(0, 0, 0, 1);
-  color: rgba(255, 255, 255, 1);
+  background: var(--color-dark);
+  color: var(--color-white);
   padding: 10px 30px;
 }
 
@@ -827,11 +829,11 @@ label {
 }
 
 .button-subscribe {
-  background: rgba(224, 224, 224, 1);
+  background: var(--color-light-gray);
   margin-top: 2rem;
   padding: 10px;
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
@@ -964,7 +966,6 @@ label {
     font-size: 1.4rem;
   }
 
-  /* EDITORIAL trigger scale up when open */
   .menu__links .dropdown .dropdown__trigger {
     transition: font-size 0.3s ease;
   }
@@ -973,13 +974,8 @@ label {
     font-size: 2.4rem;
   }
 
-  /* On mobile, only .open class controls visibility (not hover) */
   .menu__links .dropdown:hover .dropdown__menu {
     display: none;
-  }
-
-  .menu__links .dropdown .dropdown__menu.open {
-    display: block;
   }
 
   .hover-text:focus-within,
@@ -1024,8 +1020,7 @@ label {
   }
 
   .description__subtitle {
-    font-size: 1.4rem
-    
+    font-size: 1.4rem;
   }
 
   .collection__image {
@@ -1129,8 +1124,8 @@ label {
     padding: 0 2.2rem;
     height: auto;
   }
-  
-  .footer > div:nth-child(5) {
+
+  .footer>div:nth-child(5) {
     grid-column: 1 / -1;
   }
 
@@ -1152,7 +1147,4 @@ label {
     margin-top: 1.8rem;
   }
 
-  .mobile__menu {
-    text-transform: uppercase;
-  }
 }

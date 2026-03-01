@@ -1,45 +1,47 @@
-// Scroll Handle — smooth logo scaling
+function onScrollThrottled(callback) {
+    let isScheduled = false;
+
+    window.addEventListener('scroll', () => {
+        if (!isScheduled) {
+            requestAnimationFrame(() => {
+                callback();
+                isScheduled = false;
+            });
+            isScheduled = true;
+        }
+    }, { passive: true });
+}
+
+// Logo Scale on Scroll
 const logo = document.getElementById('logo');
 const logoImg = logo.querySelector('img');
 const heroVideo = document.querySelector('.hero__video');
 
-const logoMinHeight = 32;
+const LOGO_MIN_HEIGHT = 32;
 
 let logoFullHeight = 0;
-let minScale = 1;
-let ticking = false;
+let logoMinScale = 1;
 
 function calculateLogoSize() {
     logoImg.style.transform = 'scale(1)';
-
     logoFullHeight = logo.offsetHeight;
-    minScale = logoMinHeight / logoFullHeight;
+    logoMinScale = LOGO_MIN_HEIGHT / logoFullHeight;
 }
 
 function updateLogoScale() {
     if (window.innerWidth <= 768) return;
-    const videoRect = heroVideo.getBoundingClientRect();
-    const videoTop = videoRect.top;
-    const videoMidpoint = videoRect.height / 2;
 
-    const progress = Math.min(
-        Math.max(-videoTop / videoMidpoint, 0),
+    const videoRect = heroVideo.getBoundingClientRect();
+    const scrollProgress = Math.min(
+        Math.max(-videoRect.top / (videoRect.height / 2), 0),
         1
     );
 
-    const scale = 1 - progress * (1 - minScale);
+    const scale = 1 - scrollProgress * (1 - logoMinScale);
     logoImg.style.transform = `scale(${scale})`;
 }
 
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        requestAnimationFrame(() => {
-            updateLogoScale();
-            ticking = false;
-        });
-        ticking = true;
-    }
-}, { passive: true });
+onScrollThrottled(updateLogoScale);
 
 window.addEventListener('resize', () => {
     calculateLogoSize();
@@ -55,13 +57,13 @@ window.addEventListener('load', () => {
 const customSelect = document.getElementById('customSelect');
 const selectTrigger = document.getElementById('selectTrigger');
 const selectValue = document.getElementById('selectValue');
-const options = document.querySelectorAll('.custom-select__option');
+const selectOptions = document.querySelectorAll('.custom-select__option');
 
 selectTrigger.addEventListener('click', () => {
     customSelect.classList.toggle('open');
 });
 
-options.forEach(option => {
+selectOptions.forEach(option => {
     option.addEventListener('click', () => {
         selectValue.textContent = option.dataset.value;
         customSelect.classList.remove('open');
@@ -69,7 +71,6 @@ options.forEach(option => {
     });
 });
 
-// Close dropdown when clicking outside
 document.addEventListener('click', (e) => {
     if (!customSelect.contains(e.target)) {
         customSelect.classList.remove('open');
@@ -77,19 +78,18 @@ document.addEventListener('click', (e) => {
 });
 
 // Sticky Collection Text
-(function () {
+{
     const LOGO_GAP = 100;
-
     const collectionSections = document.querySelectorAll('section.collection');
+
+    const stickyItems = [];
 
     collectionSections.forEach((section) => {
         const card = section.querySelector('.collection__card');
         const text = section.querySelector('.collection__text');
-     
         const image = card.querySelector('.collection__image, video');
 
         const initialTop = (image.offsetHeight - text.offsetHeight) / 2;
-
         const maxTop = image.offsetHeight - text.offsetHeight;
 
         text.style.position = 'absolute';
@@ -98,46 +98,29 @@ document.addEventListener('click', (e) => {
         text.style.transform = 'translateX(-50%)';
         text.style.transition = 'none';
 
-        function updateTextPosition() {
-            const logoEl = document.getElementById('logo');
-            const logoRect = logoEl.getBoundingClientRect();
-            const logoBottom = logoRect.bottom;
-
-            const cardRect = card.getBoundingClientRect();
-            const imageRect = image.getBoundingClientRect();
-
-            const stickyViewportY = logoBottom + LOGO_GAP;
-            const desiredTopInCard = stickyViewportY - cardRect.top;
-
-            let newTop;
-            if (desiredTopInCard <= initialTop) {
-                newTop = initialTop;
-            } else if (desiredTopInCard >= maxTop) {
-                newTop = maxTop;
-            } else {
-                newTop = desiredTopInCard;
-            }
-
-            text.style.top = newTop + 'px';
-        }
-
-        let ticking2 = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking2) {
-                requestAnimationFrame(() => {
-                    updateTextPosition();
-                    ticking2 = false;
-                });
-                ticking2 = true;
-            }
-        }, { passive: true });
-
-        updateTextPosition();
+        stickyItems.push({ card, text, image, initialTop, maxTop });
     });
-})();
 
-// Hover Video Play
+    function updateAllStickyTexts() {
+        const logoEl = document.getElementById('logo');
+        const logoBottom = logoEl.getBoundingClientRect().bottom;
+        const stickyViewportY = logoBottom + LOGO_GAP;
+
+        stickyItems.forEach(({ card, text, initialTop, maxTop }) => {
+            const cardTop = card.getBoundingClientRect().top;
+            const desiredTop = stickyViewportY - cardTop;
+
+            const newTop = Math.min(Math.max(desiredTop, initialTop), maxTop);
+            text.style.top = newTop + 'px';
+        });
+    }
+    onScrollThrottled(updateAllStickyTexts);
+    updateAllStickyTexts();
+}
+
+// Hover Video Play (Media Swap)
 const mediaSwaps = document.querySelectorAll('.media-swap');
+
 mediaSwaps.forEach((swap) => {
     const video = swap.querySelector('video');
     if (!video) return;
@@ -170,64 +153,65 @@ const faqData = {
 const questionContainer = document.getElementById('questionContainer');
 const badges = document.querySelectorAll('.badge-gray[data-category]');
 
+function createQuestionElement(item) {
+    const questionItem = document.createElement('div');
+    questionItem.className = 'question-item';
+
+    // questions-header
+    const questionList = document.createElement('div');
+    questionList.className = 'question-list';
+
+    const title = document.createElement('div');
+    title.className = 'question-list__title';
+    title.textContent = item.q;
+
+    const arrow = document.createElement('img');
+    arrow.className = 'dropdown-arrow';
+    arrow.src = 'assets/icons/arrow-question.svg';
+    arrow.alt = 'arrow';
+
+    questionList.appendChild(title);
+    questionList.appendChild(arrow);
+
+    // answer
+    const answer = document.createElement('p');
+    answer.className = 'answer';
+    answer.textContent = item.a;
+
+    // divider
+    const divider = document.createElement('div');
+    divider.className = 'divider';
+
+    // Toggle accordion — ทุกข้อคลิกได้
+    questionList.addEventListener('click', () => {
+        const isOpen = answer.classList.contains('open');
+
+        questionContainer.querySelectorAll('.answer.open').forEach(a => a.classList.remove('open'));
+        questionContainer.querySelectorAll('.dropdown-arrow.open').forEach(a => a.classList.remove('open'));
+
+        if (!isOpen) {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+        }
+    });
+
+    questionItem.appendChild(questionList);
+    questionItem.appendChild(answer);
+    questionItem.appendChild(divider);
+
+    return questionItem;
+}
+
+// question list - category
 function renderQuestions(category) {
     const questions = faqData[category] || [];
     questionContainer.innerHTML = '';
-
-    questions.forEach((item, index) => {
-        const questionItem = document.createElement('div');
-        questionItem.className = 'question-item';
-
-        const questionList = document.createElement('div');
-        questionList.className = 'question-list';
-
-        const title = document.createElement('div');
-        title.className = 'question-list__title';
-        title.textContent = item.q;
-
-        const arrow = document.createElement('img');
-        arrow.className = 'dropdown-arrow';
-        arrow.src = 'assets/icons/arrow-question.svg';
-        arrow.alt = 'arrow';
-
-        questionList.appendChild(title);
-        questionList.appendChild(arrow);
-
-        // Answer
-        const answer = document.createElement('p');
-        answer.className = 'answer';
-        answer.textContent = item.a;
-
-        // Divider
-        const divider = document.createElement('div');
-        divider.className = 'divider';
-
-        // Toggle accordion on click
-        if (index === 0) {
-            questionList.addEventListener('click', () => {
-                const isOpen = answer.classList.contains('open');
-                questionContainer.querySelectorAll('.answer.open').forEach(a => {
-                    a.classList.remove('open');
-                });
-                questionContainer.querySelectorAll('.dropdown-arrow.open').forEach(a => {
-                    a.classList.remove('open');
-                });
-
-                if (!isOpen) {
-                    answer.classList.add('open');
-                    arrow.classList.add('open');
-                }
-            });
-        }
-
-        questionItem.appendChild(questionList);
-        questionItem.appendChild(answer);
-        questionItem.appendChild(divider);
-        questionContainer.appendChild(questionItem);
+    questions.forEach(item => {
+        questionContainer.appendChild(createQuestionElement(item));
     });
 }
 
-// Badge click handler
+// badge click handler
 badges.forEach(badge => {
     badge.addEventListener('click', () => {
         badges.forEach(b => b.classList.remove('active'));
@@ -248,8 +232,9 @@ hamburger.addEventListener('click', () => {
     document.body.style.overflow = menuLinks.classList.contains('active') ? 'hidden' : '';
 });
 
-// Mobile EDITORIAL dropdown toggle (click instead of hover)
+// Mobile "EDITORIAL" Dropdown
 const editorialDropdown = menuLinks.querySelector('.dropdown');
+
 if (editorialDropdown) {
     const editorialTrigger = editorialDropdown.querySelector('.dropdown__trigger');
     const editorialMenu = editorialDropdown.querySelector('.dropdown__menu');

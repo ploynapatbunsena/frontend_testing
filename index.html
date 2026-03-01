@@ -4,8 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Plaimanas — A curated fashion brand featuring new collections, bestsellers, and editorial content.">
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/icons/favicon.png">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Frontend Test - Plaimanas</title>
+  <title>Plaimanas | Frontend Developer Assessment</title>
 </head>
 
 <body>
@@ -49,7 +53,7 @@
 
     <div class="sign-in">
       <p>SIGN IN</p>
-      <img src="/assets//icons/bag-shopping.svg" alt="bag shopping icon">
+      <img src="assets/icons/bag-shopping.svg" alt="bag shopping icon">
     </div>
   </nav>
 
@@ -107,7 +111,8 @@
       <div class="media-swap">
         <picture>
           <source srcset="assets/images/hero/mobile/mobile-collection-01.png" media="(max-width: 768px)">
-          <img class="collection-grid__image collection-grid__image--lg" src="assets/images/hero/collection-01.png" alt="collection 1">
+          <img class="collection-grid__image collection-grid__image--lg" src="assets/images/hero/collection-01.png"
+            alt="collection 1">
         </picture>
         <video class="collection-grid__image collection-grid__image--lg media-swap__video" muted loop playsinline>
           <source src="assets/videos/collection-01.mp4" type="video/mp4">
@@ -120,7 +125,8 @@
       <div class="image-swap">
         <picture>
           <source media="(max-width: 768px)" srcset="assets/images/hero/mobile/mobile-collection-02.png">
-          <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-02.png" alt="collection 2">
+          <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-02.png"
+            alt="collection 2">
         </picture>
         <img class="collection-grid__image collection-grid__image--md image-swap__hover"
           src="assets/images/hero/people-fade.png" alt="collection 2 hover">
@@ -132,7 +138,8 @@
       <div class="image-swap">
         <picture>
           <source media="(max-width: 768px)" srcset="assets/images/hero/mobile/mobile-collection-03.png">
-          <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-03.png" alt="collection 3">
+          <img class="collection-grid__image collection-grid__image--md" src="assets/images/hero/collection-03.png"
+            alt="collection 3">
         </picture>
         <img class="collection-grid__image collection-grid__image--md image-swap__hover "
           src="assets/images/hero/people-fade.png" alt="collection 3 hover">
@@ -185,8 +192,10 @@
     <div class="feature-quote">
       <span class="feature-quote__subtitle">CUSTOMER SERVICE</span>
       <p class="feature-quote__body"><span style="text-decoration: underline;">Lorem ipsum dolor sit amet,</span>
-        consectetur <br> adipiscing elit. Nam ornare, nisl non rhoncus <br> commodo, turpis elit ultricies justo, vitae <br>
-        molestie quam justo ut lacus. Proin vitae</p>
+        consectetur <br> adipiscing elit. Nam ornare, nisl non rhoncus <br> commodo, turpis elit ultricies justo, vitae
+        <br>
+        molestie quam justo ut lacus. Proin vitae
+      </p>
     </div>
     <div class="feature-quote">
       <span class="feature-quote__subtitle">SECURITY PAYMENT</span>
@@ -262,8 +271,8 @@
           </div>
         </div>
         <div class="consent">
-          <input type="checkbox">
-          <label for="">I agree to all terms & conditions</label>
+          <input type="checkbox" id="consent">
+          <label for="consent">I agree to all terms & conditions</label>
         </div>
         <div class="form-submit">Send</div>
       </div>
@@ -275,7 +284,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="">
+    <div class="footer-column">
       <div class="footer-header">ABOUT</div>
       <div class="footer-header__list">
         <div class="list">Women</div>
@@ -284,7 +293,7 @@
         <div class="list">Stories</div>
       </div>
     </div>
-    <div class="">
+    <div class="footer-column">
       <div class="footer-header">help</div>
       <div class="footer-header__list">
         <div class="list">Payment Notification</div>
@@ -292,14 +301,14 @@
         <div class="list">FAQ</div>
       </div>
     </div>
-    <div class="">
+    <div class="footer-column">
       <div class="footer-header">social</div>
       <div class="footer-header__list">
         <div class="list">Instagram</div>
         <div class="list">Facebook</div>
       </div>
     </div>
-    <div class="">
+    <div class="footer-column">
       <div class="footer-header">legal</div>
       <div class="footer-header__list">
         <div class="list">Terms & Conditions</div>
@@ -307,11 +316,11 @@
         <div class="list">Cookies Policy</div>
       </div>
     </div>
-    <div class="">
+    <div class="footer-column">
       <div class="footer-header">NEWSLETTER</div>
       <div class="floating-label">
-        <input type="email" id="email" class="form-contact__input" placeholder=" ">
-        <label for="email">Email</label>
+        <input type="email" id="footerEmail" class="form-contact__input" placeholder=" ">
+        <label for="footerEmail">Email</label>
       </div>
       <div class="button-subscribe">
         SUBSCRIBE
